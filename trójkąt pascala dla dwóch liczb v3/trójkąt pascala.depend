@@ -1,0 +1,44 @@
+# depslib dependency file v1.0
+1452950839 source:d:\c++\infa\trójk¹t pascala\main.cpp
+	<iostream>
+
+1454074601 source:c:\users\adam\desktop\trójk¹t pascala dla dwóch liczb v2\main.cpp
+	<iostream>
+	<windows.h>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	<cstring>
+	<sstream>
+
+1454074602 source:h:\trójk¹t pascala dla dwóch liczb\main.cpp
+	<iostream>
+	<windows.h>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	<cstring>
+	<sstream>
+
+1454074602 source:f:\trójk¹t pascala dla dwóch liczb\main.cpp
+	<iostream>
+	<windows.h>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	<cstring>
+	<sstream>
+
+1456404486 source:c:\users\adam\desktop\trójk¹t pascala dla dwóch liczb\main.cpp
+	<iostream>
+	<windows.h>
+	<fstream>
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	<cstring>
+	<sstream>
+

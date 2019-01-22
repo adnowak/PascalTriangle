@@ -1,0 +1,121 @@
+1. Trójk¹t Pascala:
+
+Boczne liczby zawsze maj¹ wartoœæ 1, a pozosta³e powstaj¹, przez dodanie do siebie dwóch liczb znajduj¹cych siê bezpoœrednio nad ni¹.
+Tak wygl¹da pierwsze piêæ wierszy trójk¹ta Pascala:
+
+	1
+       1 1
+      1 2 1
+     1 3 3 1
+    1 4 6 4 1
+
+Program ma zaznaczaæ liczby, które s¹ podzielne przez podany dzielnik,
+dla przyk³adu dzielnikiem bêdzie 3, a zaznaczeniem bêdzie wpisanie zamiast liczby znaku 'x'.
+Trójk¹t w tym przypadku po zaznaczeniu bêdzie wygl¹daæ tak:
+
+	1
+       1 1
+      1 2 1
+     1 x x 1
+    1 4 x 4 1
+
+W praktyce, ze wzglêku na estetykê i wielkoœæ liczb, program wszystkie liczby wyœwietla jako 'x'.
+Liczby spe³niaj¹ce podany warunek "koloruje" na zielono, a pozosta³e na niebiesko.
+
+2. Jak program wyœwietla trójk¹t Pascala:
+
+Wygl¹d trójk¹ta Pascala, do jakiego jesteœmy przyzwyczajeni, jest dla komputera niemo¿liwy do zrozumienia, poniewa¿ nie ma ¿adnej "trójk¹tnej"
+struktury danych, ale mo¿emy pos³uzyæ siê "kwadratow¹", czyli tablic¹ dwuwymiarow¹, której tylko znacz¹c¹ czêœæ wyœwietlimy, a odpowiednie wiersze przesuniemy za pomoc¹ spacji, 
+aby uzyskaæ kszta³t trójk¹ta Pascala, jaki znamy.
+
+Komputer "widzi" tablicê z zapisanym trójk¹tem Pascala mniej wiêcej tak:
+
+10000
+11000
+12100
+13310
+14641                       
+
+Wystarczy teraz wyswietliæ tylko znacz¹c¹ czêœæ, czyli po prostu sprawdzamy, czy dana liczba jest równa 0, jesli tak, to nie wyœwietlamy,
+jeœli nie, to wyœwietlamy. Po zastosowaniu tego i wyœwietleniu otrzymamy coœ takiego:
+
+1
+11
+121
+1331
+14641
+
+Nie wygl¹da to jednak jeszcze jak trójk¹t Pascala. Aby uzyskaæ efekt wizualny wystarczy przed ka¿dym wierszem wypisaæ odpowiedni¹ liczbê
+spacji( zale¿n¹ od tego, który to wiersz i ile jest wierszy) i po wypisaniu ka¿dej liczby kolejn¹ spacjê, otrzymamy po tym w koñcu "prawdziwy" 
+trójk¹t Pascala:
+
+    1     pierwszy kolumna (z czego 1), mamy 5 wierszy (z czego 5), 5 - 1 = 4, czyli przed wierszem wypisujemy 4 spacje,
+   1 1								    5 - 2 = 3, czyli przed wierszem wypisujemy 3 spacje, itd.
+  1 2 1
+ 1 3 3 1
+1 4 6 4 1
+
+liczba spacji do wypisania przed dowolnym wierszem = liczba wierszy - numer dowolnego wiersza
+
+3. Jak program oblicza trójk¹t Pascala:
+
+Program oblicza trójk¹t Pascala dok³adnie tak, jak my to robimy (patrz punkt 1), tylko ¿e trzeba mu powiedzieæ, co to znaczy, ¿e liczba jest na boku 
+trójk¹ta i co to znaczy bezpoœrednio nad ni¹:
+
+W celu lepszego zobrazowania problemu wyobraŸmy sobie, jak komputer "widzi" tablicê dwuwymiarow¹:
+
+  0 1 2 3 4
+  _________x
+0|             
+1|              
+2|               
+3|           
+4|   
+ y    
+
+Do naszej tablicy liczba[][], liczby s¹ zapisywane w poni¿szy sposób:
+
+	liczba[x][y] = dana liczba       
+
+Jak w punkcie 2, narysujmy w niej trójk¹t Pascala, dla lepszej widocznoœci ju¿ bez zer:
+
+  0 1 2 3 4 
+  _________x
+0|1             
+1|1 1              
+2|1 2 1             
+3|1 3 3 1        
+4|1 4 6 4 1     
+ y
+     
+£atwo mo¿na zauwa¿yæ, ¿e liczba[0][0]=1, liczba[0][1]=1, liczba[0][2]=1, czyli liczby z indeksem x = 0, s¹ równe 1,
+
+oraz ¿e liczba[1][1]=1, liczba[2][2]=1, liczba[3][3]=1, czyli liczby z indeksem x = y, s¹ równe 1,
+
+Pozostaje tylko powiedzieæ programowi, które liczby ma dodaæ.
+W tym celu popatrzmy jeszcze raz na nasz¹ tablicê i zauwa¿my, co jest sum¹ czego:
+
+  0 1 2 3 4 
+  _________x
+0|1             
+1|1 1              
+2|1 2 1             2=1+1
+3|1 3 3 1        		3=2+1, 3=1+2
+4|1 4 6 4 1     				4=3+1, 6=3+3, 4=1+3
+ y
+
+Zauwa¿yliœmy, ¿e liczba jest sum¹ liczby zaraz nad ni¹ i liczby o jedno miejsce w lewo, teraz tylko pozostaje to zapisaæ:
+
+jeœli nasza liczba jest w komórce liczba[n][r], to liczba zaraz nad ni¹ powinna mieæ indeks y o 1 mniejszy, 
+przez co wiemy, ¿e jest w komórce liczba[n][r-1],
+
+liczba o jedno mniejsce w lewo od niej bêdzie ponadto mia³a indeks x o 1 mniejszy,
+przez co wiemy, ¿e jest w komórce liczba[n-1][r-1]
+
+skoro jest ona ich sum¹, mo¿emy zapisaæ:
+
+liczba[n][r] = liczba[n][r-1]+liczba[n-1][r-1]
+
+
+															Adam Nowak 19.01.2016
+
